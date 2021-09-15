@@ -27,5 +27,17 @@ void main() {
         expect(res!.statusCode, 400);
       });
     });
+
+    group('users', () {
+      test('Get All Users', () async {
+        final res = await service.getAllUser();
+        expect(res!.statusCode, 200);
+      });
+
+      test('get detail users', () async {
+        final res = await service.getSingleUser(id: 5);
+        expect(res!.statusCode, 200);
+      });
+    });
   });
 }
