@@ -1,6 +1,3 @@
-import 'package:json_serializable/builder.dart';
-
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_profile.g.dart';
@@ -21,7 +18,7 @@ class UserProfile {
     required this.avatar,
   });
 
-  factory UserProfile.fromJson(Map<String, dynamic> json) => _$UserProfileFromJson(json);
+  factory UserProfile.fromJson(Map<String, dynamic> json) =>
+      _$UserProfileFromJson(json);
   Map<String, dynamic> toJson() => _$UserProfileToJson(this);
-
 }

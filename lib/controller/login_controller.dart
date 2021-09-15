@@ -1,14 +1,13 @@
 import 'package:get/get.dart';
-import 'package:transisi_test/model/data/response/controller_response.dart';
 import 'package:transisi_test/model/data/response/error_response.dart';
-import 'package:transisi_test/model/data/response/login_response.dart';
 import 'package:transisi_test/model/services/app_services.dart';
+import 'package:transisi_test/view/home_view.dart';
 
 class LoginController extends GetxController {
   // var response = ControllerResponse(isSuccess: false).obs;
 
-  var isSuccess = false.obs;
-  var errorMessage = ''.obs;
+  // var isSuccess = false.obs;
+  // var errorMessage = ''.obs;
 
   final service = AppServices();
 
@@ -16,12 +15,11 @@ class LoginController extends GetxController {
     final res = await service.loginService(email: email, password: password);
 
     if (res!.statusCode == 200) {
-      isSuccess = true.obs;
+      Get.to(() => const HomeView());
     } else {
       var errorResponse = ErrorResponse.fromJson(res.data);
-
-      isSuccess = false.obs;
-      errorMessage = errorResponse.error.obs;
+      Get.snackbar(
+          'Login', 'Login Failure with message ${errorResponse.error}');
     }
 
     update();

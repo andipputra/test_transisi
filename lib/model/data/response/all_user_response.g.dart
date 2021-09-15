@@ -13,7 +13,7 @@ AllUserResponse _$AllUserResponseFromJson(Map<String, dynamic> json) {
     total: json['total'] as int,
     totalPages: json['total_pages'] as int,
     data: (json['data'] as List<dynamic>)
-        .map((e) => AllUserResponse.fromJson(e as Map<String, dynamic>))
+        .map((e) => UserProfile.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
 }

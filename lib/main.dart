@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:transisi_test/view/login_view.dart';
 
 void main() {
@@ -11,14 +12,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Transisi Test',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(16),
+            ),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              minimumSize: const Size(double.infinity, 32),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              primary: Colors.blue),
         ),
       ),
-      home: LoginViews(),
+      home: const LoginViews(),
       // title: 'Flutter Demo',
       // theme: ThemeData(
       //   // This is the theme of your application.

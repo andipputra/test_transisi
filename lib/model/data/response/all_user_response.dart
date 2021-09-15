@@ -9,7 +9,7 @@ class AllUserResponse {
   final int perPage;
   final int total;
   final int totalPages;
-  final List<AllUserResponse> data;
+  final List<UserProfile> data;
 
   AllUserResponse({
     required this.page,
@@ -19,6 +19,7 @@ class AllUserResponse {
     required this.data,
   });
 
-  factory AllUserResponse.fromJson(Map<String, dynamic> json) => _$AllUserResponseFromJson(json);
+  factory AllUserResponse.fromJson(Map<String, dynamic> json) =>
+      _$AllUserResponseFromJson(json);
   Map<String, dynamic> toJson() => _$AllUserResponseToJson(this);
 }
