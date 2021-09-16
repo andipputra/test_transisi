@@ -6,6 +6,8 @@ Transisi Test Project,
 
 Project ini adalah project test dari transisi.
 
+File APK dapat di ambil pada folder apk
+
 ## Getting Started
 
 Aplikasi dibangun menggunakan flutter dengan arsitektur MVC menggunakan GetX sebagai state management.
