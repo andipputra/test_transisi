@@ -1,16 +1,17 @@
 # transisi_test
 
-A new Flutter project.
+Transisi Test Project,
+
+## Description
+
+Project ini adalah project test dari transisi.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Aplikasi dibangun menggunakan flutter dengan arsitektur MVC menggunakan GetX sebagai state management.
 
-A few resources to get you started if this is your first Flutter project:
+untuk api menggunakan https://reqres.in/.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+untuk login dapat menggunakan data : 
+- email : eve.holt@reqres.in
+- password : cityslicka
