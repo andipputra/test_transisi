@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transisi_test/controller/home_controller.dart';
+import 'package:transisi_test/view/employee_detail_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -18,61 +19,33 @@ class _HomeViewState extends State<HomeView> {
     var lUser = homeController.listUser;
 
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            homeController.goToAddEmployee();
+      appBar: AppBar(
+        title: const Text('Contact'),
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+        automaticallyImplyLeading: false,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          homeController.goToAddEmployee();
+        },
+        child: const Icon(Icons.add),
+      ),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(8),
+        shrinkWrap: true,
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
+        itemBuilder: (context, index) => ListTile(
+          onTap: () {
+            Get.to(EmployeeDetailView(userProfile: lUser[index]));
           },
-          child: const Icon(Icons.add),
+          leading:
+              CircleAvatar(backgroundImage: NetworkImage(lUser[index].avatar)),
+          title: Text('${lUser[index].firstName} ${lUser[index].lastName}'),
+          subtitle: Text(lUser[index].email),
+          trailing: const Icon(Icons.star),
         ),
-        body: Obx(
-          () => ListView.builder(
-            padding: const EdgeInsets.all(24),
-            shrinkWrap: true,
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      CachedNetworkImage(
-                        imageUrl: lUser[index].avatar,
-                        imageBuilder: (context, imageProvider) => Container(
-                          width: 80.0,
-                          height: 80.0,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: imageProvider, fit: BoxFit.cover),
-                          ),
-                        ),
-                        placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        errorWidget: (context, url, image) => const Center(
-                          child: Icon(Icons.error),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 18,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                              '${lUser[index].firstName} ${lUser[index].lastName}'),
-                          Text(lUser[index].email)
-                        ],
-                      ),
-                    ],
-                  ),
-                  const Icon(Icons.star)
-                ],
-              ),
-            ),
-            itemCount: lUser.length,
-          ),
-        ));
+        itemCount: lUser.length,
+      ),
+    );
   }
 }

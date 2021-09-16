@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AddEmployeeView extends StatefulWidget {
   const AddEmployeeView({Key? key}) : super(key: key);
@@ -19,9 +20,26 @@ class _AddEmployeeViewState extends State<AddEmployeeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(child: const Icon(Icons.close)),
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: const Icon(Icons.close),
+        ),
         title: const Text('Add Employee'),
         centerTitle: false,
+        titleTextStyle: const TextStyle(fontSize: 20),
+        actions: [
+          TextButton(
+              onPressed: () {},
+              child: const Text(
+                'Save',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ))
+        ],
       ),
       body: Container(
         padding: const EdgeInsets.all(24),
@@ -67,7 +85,7 @@ class _AddEmployeeViewState extends State<AddEmployeeView> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   label: Text('Email'),
-                  prefixIcon: Icon(Icons.phone),
+                  prefixIcon: Icon(Icons.mail),
                 ),
               ),
             ],
