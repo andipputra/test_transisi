@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:transisi_test/controller/create_employee_controller.dart';
 
 class AddEmployeeView extends StatefulWidget {
   const AddEmployeeView({Key? key}) : super(key: key);
@@ -16,6 +17,8 @@ class _AddEmployeeViewState extends State<AddEmployeeView> {
 
   final _fKey = GlobalKey<FormState>();
 
+  final ceController = Get.put(CreateEmployeeController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +34,10 @@ class _AddEmployeeViewState extends State<AddEmployeeView> {
         titleTextStyle: const TextStyle(fontSize: 20),
         actions: [
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                ceController.createEmployee(
+                    name: nameTEC.text, job: jobTEC.text);
+              },
               child: const Text(
                 'Save',
                 style: TextStyle(
@@ -51,7 +57,7 @@ class _AddEmployeeViewState extends State<AddEmployeeView> {
                 controller: nameTEC,
                 keyboardType: TextInputType.text,
                 decoration: const InputDecoration(
-                  label: Text('Name'),
+                  labelText: 'Name',
                   prefixIcon: Icon(Icons.people),
                 ),
               ),
@@ -62,7 +68,7 @@ class _AddEmployeeViewState extends State<AddEmployeeView> {
                 controller: jobTEC,
                 keyboardType: TextInputType.text,
                 decoration: const InputDecoration(
-                  label: Text('Job'),
+                  labelText: 'Job',
                   prefixIcon: Icon(Icons.work),
                 ),
               ),
@@ -73,7 +79,7 @@ class _AddEmployeeViewState extends State<AddEmployeeView> {
                 controller: phoneTEC,
                 keyboardType: TextInputType.phone,
                 decoration: const InputDecoration(
-                  label: Text('Phone'),
+                  labelText: 'Phone',
                   prefixIcon: Icon(Icons.phone),
                 ),
               ),
@@ -84,7 +90,7 @@ class _AddEmployeeViewState extends State<AddEmployeeView> {
                 controller: emailTEC,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  label: Text('Email'),
+                  labelText: 'Email',
                   prefixIcon: Icon(Icons.mail),
                 ),
               ),

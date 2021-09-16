@@ -15,6 +15,7 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
+
   void fetchUser() async {
     final res = await service.getAllUser();
 
@@ -25,6 +26,8 @@ class HomeController extends GetxController {
     } else {
       listUser.clear();
     }
+
+    update();
   }
 
   void goToAddEmployee() {
